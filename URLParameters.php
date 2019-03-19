@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Learn PHP - URL Parameters</title>
+    <title>Learn PHP - URL's Parameters</title>
     <style>
         * {
             margin: 0;
@@ -31,13 +31,11 @@
             border-radius: 3px;
             border: 1px solid #000;
             text-align: center;
-            max-height: 30vh;
-            overflow-y: scroll;
         }
     </style>
 </head>
 <body>
-    <h1>URL Parameters</h1>
+    <h1>URL's Parameters</h1>
 
     <!-- exercice 1  -->
     <h2>Exercice 1</h2>
