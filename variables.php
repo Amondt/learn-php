@@ -35,7 +35,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Learn PHP</title>
+    <title>Learn PHP - Variables</title>
     <style>
         * {
             margin: 0;
@@ -62,7 +62,7 @@
     </style>
 </head>
 <body>
-    <h1>Learn PHP</h1>
+    <h1>Variables</h1>
 
     <!-- PHP exercice 1 -->
     <h2>Exercice 1</h2>
