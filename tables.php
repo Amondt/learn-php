@@ -1,24 +1,18 @@
 <?php
-    $firstName = 'Alexandre';
-    $lastName = 'Mondt';
-    $msg = 'coucou';
-    $num = 24;
-    $isMan = false;
-
+    // Exe 1 / 2
     $month = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august',
             'september', 'october', 'december'];
     
+    // Exe 3
     $departements = ['01' => 'Ain', '03' => 'Allier', '07' => 'Ardèche', '15' => 'Cantal', 
                     '26' => 'Drôme', '38' => 'Isère', '42' => 'Loire', '43' => 'Haute-Loire',
                     '63' => 'Puy-de-Dôme', '69' => 'Rhône', '73' => 'Savoie', '74' => 'Haute-Savoie'];
     $departements['57'] = 'Moselle';
 
     // var_dump($departements);
-    // Exe 1
-    function vrai() {
-        return true;
-    }
 
+    // Exe 4
+    $mailing = array("Alex", "Max", "Dominique", "Claude", "Leslie", "Charlie", "Lou");
 ?>
 
 <!DOCTYPE html>
@@ -50,8 +44,8 @@
             border-radius: 3px;
             border: 1px solid #000;
             text-align: center;
-            /* max-height: 20vh; */
-            /* overflow-y: scroll; */
+            max-height: 30vh;
+            overflow-y: scroll;
         }
     </style>
 </head>
@@ -67,7 +61,13 @@
     <!-- exercice 3 -->
     <h2>Exercice 3</h2>
     <div class="my-text">
-        <p><?php foreach ($departements as $i => $value) { echo 'Le département ' . $value . ' a le numéro ' . $i . '<br>'; } ?></p>
+        <p><?php foreach ($departements as $i => $value) { echo 'Le département ' . $value . ' a le numéro ' . $i . '<br><br>'; } ?></p>
+    </div>
+
+    <!-- exercice 4 -->
+    <h2>Exercice 4</h2>
+    <div class="my-text">
+        <p><?php foreach ($mailing as $value) { echo "Salut " . $value . ", devine quoi ! Je me marie samedi dans deux semaines ! J'espère te compter parmi les invités ! Gros bisous :)<br><br>"; } ?></p>
     </div>
 
 </body>
