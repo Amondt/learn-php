@@ -77,6 +77,15 @@ $_SESSION["age"] = 24;
         <a href="anotherPage.php"><button>Here</button></a>
     </div>
 
+    <!-- exercice 3 / 4 / 5 -->
+    <h2>Exercice 3 / 4 / 5</h2>
+    <div class="my-text">
+        <form action="againAnotherPage.php" method="post">
+            <input type="text" name="login" placeholder="your login here" required>
+            <input type="password" name="pwd" placeholder="your password here" required>
+            <button type="submit">Log in</button>
+        </form>
+    </div>
 
 </body>
 </html>
