@@ -1,9 +1,12 @@
 <?php
-session_start();
-
-$_SESSION["firstName"] = 'Alex';
-$_SESSION["lastName"] = 'Mondt';
-$_SESSION["age"] = 24;
+date_default_timezone_set('Europe/Paris');
+// --- La setlocale() fonctionnne pour strftime mais pas pour DateTime->format()
+setlocale(LC_TIME, 'fr_FR.utf8','fra');// OK
+// strftime("jourEnLettres jour moisEnLettres annee") de la date courante
+$dates = [
+    'jours' => ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
+    'mois' => ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+];
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +29,7 @@ $_SESSION["age"] = 24;
         }
         h2 {
             text-align: center;
-            margin: 20px auto;
+            margin: 40px auto 10px auto;
         }
         form {
             display: flex;
@@ -53,19 +56,53 @@ $_SESSION["age"] = 24;
             border: 1px solid #000;
             text-align: center;
         }
+        .calendar {
+            width: 50%;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid #555;
+        }
     </style>
 </head>
 <body>
     <h1>Dates</h1>
 
-    <!-- exercice 1 -->
-    <h2>Exercice 1</h2>
+    <!-- exercices -->
+    <h2>Exercices</h2>
     <div class="my-text">
-        <p><?php echo $_SERVER['REMOTE_ADDR'] ?></p>
+        <!-- exe 1 -->
+        <p><?php echo date("d/m/Y") ?></p>
         <br>
-        <p><?php echo $_SERVER['HTTP_USER_AGENT'] ?></p>
+        <!-- exe 2 -->
+        <p><?php echo date("d-m-Y") ?></p>
         <br>
-        <p><?php echo $_SERVER['SERVER_NAME'] ?></p>
+        <!-- exe 3 -->
+        <p><?php echo date("l d F Y") ?></p>
+        <br>
+        <p><?php echo strftime("%A %d %B %Y")  ?></p>
+        <br>
+        <!-- exe 4 -->
+        <p><?php echo time() . ' | ' . strtotime('2016-09-02 15:00') ?></p>
+        <br>
+        <!-- exe 5 -->
+        <p><?php echo 'Days of difference : ' . round((time() - strtotime("2016-05-16") ) / (60*60*24) ) ?></p>
+        <br>
+        <!-- exe 6 -->
+        <p><?php echo 'No of days in feb 2017 : ' . round((strtotime('2017-03-01') - strtotime('2017-02-01')) / (60*60*24)) ?></p>
+        <br>
+        <!-- exe 7 -->
+        <p><?php echo 'Add 20 days to actual date : ' . date('d-m-Y', time()+ 20*24*60*60)  ?></p>
+        <br>
+        <!-- exe 8 -->
+        <p><?php echo 'Rem 22 days to actual date : ' . date('d-m-Y', time()- 22*24*60*60)  ?></p>
+    </div>
+
+    <!-- TP -->
+    <h2>TP</h2>
+    <div class="calendar">
+        
+    
     </div>
 
 </body>
