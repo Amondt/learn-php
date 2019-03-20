@@ -74,22 +74,26 @@
         </form>
     </div>
 
-    <!-- exercice 5 / 6  -->
-    <h2>Exercice 5 / 6</h2>
+    <!-- exercice 5 / 6 / 7 / 8 -->
+    <h2>Exercice 5 / 6 / 7 / 8</h2>
     <div class="my-text">
         <?php 
-        if (isset($_GET['lastName']) && isset($_GET['firstName']) && isset($_GET['civility'])) {?>
-            <h3><?php echo 'Hello ' . $_GET['civility'] . ' ' . $_GET['firstName'] . ' ' . $_GET['lastName'] ?></h3>
+        if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['civility']) && !empty($_FILES['myFile']['name'])) {?>
+            <h3><?php echo 'Hello ' . $_POST['civility'] . ' ' . $_POST['firstName'] . ' ' . $_POST['lastName'] ?></h3>
+            <p><?php  echo 'File\'s name : ' . $_FILES['myFile']['name'] ?></p>
+            <p><?php  echo 'File\'s extention : ' . $_FILES['myFile']['type'] ?></p>
             <a href="forms.php"><button>Show form</button></a>
         <?php } else {
         ?>
-        <form action="" method="GET">
+        <form action="forms.php" method="post" enctype="multipart/form-data">
             <input type="text" name="lastName" placeholder="Your last name here" required>
             <input type="text" name="firstName" placeholder="Your first name here" required>
             <select name="civility" size="1">
             <option>Mme
             <option>Mr
             </select>
+            <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
+            <input type="file" name="myFile" accept=".pdf" required>
             <button type="submit">Send</button>
         </form>
         <?php } ?>
