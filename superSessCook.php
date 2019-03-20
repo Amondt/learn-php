@@ -1,5 +1,9 @@
 <?php
+session_start();
 
+$_SESSION["firstName"] = 'Alex';
+$_SESSION["lastName"] = 'Mondt';
+$_SESSION["age"] = 24;
 ?>
 
 <!DOCTYPE html>
@@ -57,11 +61,20 @@
     <!-- exercice 1 -->
     <h2>Exercice 1</h2>
     <div class="my-text">
-        <form action="user.php" method="GET">
-            <input type="text" name="lastName" placeholder="Your last name here" required>
-            <input type="text" name="firstName" placeholder="Your first name here" required>
-            <button type="submit">Send</button>
-        </form>
+        <p><?php echo $_SERVER['REMOTE_ADDR'] ?></p>
+        <br>
+        <p><?php echo $_SERVER['HTTP_USER_AGENT'] ?></p>
+        <br>
+        <p><?php echo $_SERVER['SERVER_NAME'] ?></p>
+    </div>
+
+    <!-- exercice 2 -->
+    <h2>Exercice 2</h2>
+    <div class="my-text">
+        <p><?php echo 'Your full name is ' . $_SESSION["firstName"] . ' ' . $_SESSION['lastName'] . ' and you are ' . $_SESSION['age'] . ' years old' ?></p>
+        <br>
+        <p>Check those info's on another page via '$_SESSION'</p>
+        <a href="anotherPage.php"><button>Here</button></a>
     </div>
 
 
