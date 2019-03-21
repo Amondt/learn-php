@@ -1,15 +1,4 @@
 <?php
-date_default_timezone_set('Europe/Paris');
-// --- La setlocale() fonctionnne pour strftime mais pas pour DateTime->format()
-setlocale(LC_TIME, 'fr_FR.utf8','fra');// OK
-// strftime("jourEnLettres jour moisEnLettres annee") de la date courante
-$timestamp = strtotime($_POST['date']);
-$date = strftime("%B %Y", $timestamp);
-$firstDayNo = strftime("%u", $timestamp);
-
-$timestampNext = strtotime('+1 month', $timestamp);
-
-$noDayMonth = round(($timestampNext - $timestamp) / (60*60*24));
 
 ?>
 
@@ -19,7 +8,7 @@ $noDayMonth = round(($timestampNext - $timestamp) / (60*60*24));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calendar App</title>
+    <title>Calculator App</title>
     <style>
         * {
             margin: 0;
@@ -74,32 +63,8 @@ $noDayMonth = round(($timestampNext - $timestamp) / (60*60*24));
     </style>
 </head>
 <body>
-    <h1>Calendar</h1>
+    
 
-    <div class="calendar">
-        <p><b><?php echo ucwords($date)  ?></b></p>
 
-        <ul class='days'>
-            <li>Lundi</li>
-            <li>Mardi</li>
-            <li>Mercredi</li>
-            <li>Jeudi</li>
-            <li>Vendredi</li>
-            <li>Samedi</li>
-            <li>Dimanche</li>
-        </ul>
-        <ul class="days-no">
-            <?php 
-            for ($i = 1; $i < ($noDayMonth + $firstDayNo); $i++) {
-                if ($i < $firstDayNo) {
-                    echo '<li></li>';
-                } else {
-                    echo '<li>' . ($i +1 - $firstDayNo) . '</li>';
-                }
-            }
-            ?>
-        </ul>
-    </div>
-    <a href="dates.php"><button>Back</button></a>
 </body>
 </html>
