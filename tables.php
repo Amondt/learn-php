@@ -61,7 +61,7 @@
     <!-- exercice 3 -->
     <h2>Exercice 3</h2>
     <div class="my-text">
-        <p><?php foreach ($departements as $i => $value) { echo 'Le département ' . $value . ' a le numéro ' . $i . '<br><br>'; } ?></p>
+        <p><?php foreach ($departements as $key => $value) { echo 'Le département ' . $value . ' a le numéro ' . $key . '<br><br>'; } ?></p>
     </div>
 
     <!-- exercice 4 -->

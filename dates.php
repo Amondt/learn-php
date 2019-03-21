@@ -56,13 +56,6 @@ $dates = [
             border: 1px solid #000;
             text-align: center;
         }
-        .calendar {
-            width: 50%;
-            margin: 20px auto;
-            padding: 10px;
-            border-radius: 3px;
-            border: 1px solid #555;
-        }
     </style>
 </head>
 <body>
@@ -100,9 +93,14 @@ $dates = [
 
     <!-- TP -->
     <h2>TP</h2>
-    <div class="calendar">
+    <div class="my-text">
+        <form action="calendarApp.php" method="post">
+            <label for="date">Choose your month</label>
+            <input type="month" id="date" name="date" min="1900-01">
+
+            <button type="submit">Send</button>
         
-    
+        </form>
     </div>
 
 </body>
