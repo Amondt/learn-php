@@ -77,7 +77,7 @@
     <!-- exercice 5 / 6 / 7 / 8 -->
     <h2>Exercice 5 / 6 / 7 / 8</h2>
     <div class="my-text">
-        <?php 
+        <?php
         if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['civility']) && !empty($_FILES['myFile']['name'])) {?>
             <h3><?php echo 'Hello ' . $_POST['civility'] . ' ' . $_POST['firstName'] . ' ' . $_POST['lastName'] ?></h3>
             <p><?php  echo 'File\'s name : ' . $_FILES['myFile']['name'] ?></p>
