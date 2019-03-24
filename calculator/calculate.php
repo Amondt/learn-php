@@ -22,8 +22,9 @@ function standardiseCalc($calcStr) {
     $calcStr = preg_replace('/ /', '',  $calcStr);
     $calcStr = preg_replace('/÷/', '/', $calcStr);
     $calcStr = preg_replace('/×/', '*', $calcStr);
-    // !! ------   & means √    ----- !!
+    // ------------   & means √    ---------------
     $calcStr = preg_replace('/√/', '&', $calcStr);
+    // ------------   @ means ²    ---------------
     $calcStr = preg_replace('/²/', '@', $calcStr);
     $calcStr = preg_replace('/,/', '.', $calcStr);
     return $calcStr;
@@ -52,7 +53,7 @@ function createCalcArray($calcStr) {
 
 function displayArr($arr) {
     for ($i=0; $i<sizeof($arr); $i++) {
-        echo $arr[$i] . ' ';
+        // echo $arr[$i] . ' ';
     }
     echo '<br>';
 }
@@ -63,7 +64,7 @@ function calculate($calcArr) {
         while ($j < sizeof($calcArr)) {
             displayArr($calcArr);
             echo 'el: ' . $calcArr[$j] . '<br>type of el: ' . gettype($calcArr[$j]) . '<br>$j: ' . $j . "<br>";
-            echo print_r($calcArr) . '<br>';
+            echo $calcArr;
             // Parenthesis
             if ($calcArr[$j] == '(' && $calcArr[$j+2] == ')') {
                 array_splice($calcArr, $j, 1);
@@ -71,17 +72,23 @@ function calculate($calcArr) {
                 echo 'parenthesis remove' . '<br>';
             // pow
             } else if ($calcArr[$j] == '@' && $calcArr[$j-1] != ')') {
-                echo 'pow ' . $calcArr[$j-1] . '<br>';
+                // echo 'pow ' . $calcArr[$j-1] . '<br>';
                 $res = strval(pow($calcArr[$j-1], 2));
                 echo gettype($res) . '<br>';
                 array_splice($calcArr, $j-1, 2);
                 array_splice($calcArr, $j-1, 0, $res);
             // sqrt
             } else if ($calcArr[$j] == '&' && $calcArr[$j+1] != '(') {
-                echo 'sqrt ' . $calcArr[$j+1] . '<br>';
-                $res = strval(sqrt($calcArr[$j+1]));
-                array_splice($calcArr, $j, 2);
-                array_splice($calcArr, $j, 0, $res);
+                if ($calcArr[$j+1] < 0) {
+                    echo 'sqrt of a negative ( ' . $calcArr[$j+1] . ' )<br>';
+                    $calcArr = ['Sqrt of a negative'];
+                    return $calcArr;
+                } else {
+                    echo 'sqrt ' . $calcArr[$j+1] . '<br>';
+                    $res = strval(sqrt($calcArr[$j+1]));
+                    array_splice($calcArr, $j, 2);
+                    array_splice($calcArr, $j, 0, $res);
+                }
             // Multiply
             } else if ($calcArr[$j] == '*' && $calcArr[$j+1] != '(' && $calcArr[$j-1] != ')' && $calcArr[$j+1] != '&') {
                 echo 'multiply : ' . $calcArr[$j-1] . ' * ' . $calcArr[$j+1] . '<br>';
@@ -92,7 +99,7 @@ function calculate($calcArr) {
             } else if ($calcArr[$j] == '/' && $calcArr[$j+1] != '(' && $calcArr[$j-1] != ')' && $calcArr[$j+1] != '&') {
                 if ($calcArr[$j+1] == 0) {
                     echo 'division per ' . $calcArr[$j+1] . ' (IS 0)' . '<br>';
-                    $calcArr = ['Division by 0 impossible'];
+                    $calcArr = ['Division by 0'];
                     return $calcArr;
                 } else {
                     echo 'division per ' . $calcArr[$j+1] . ' (IS NOT 0)' . '<br>';
@@ -120,14 +127,13 @@ function calculate($calcArr) {
                 array_splice($calcArr, $j-1, 0, $res);
             }
             $j++;
-            echo '<br>';
+            // echo '<br>';
         }
     }
     return $calcArr;
 }
 
-
-// ! <----- TODO gestion +/- ----->
+// ! <----- TODO gestion +/- || sqrt negative > error ----->
 $calc = $_POST['usrInput'];
 // $calc = '45 / ((2² + 3²) - 13)';
 // $calc = "5.3×5²×(5.1+6÷8.4)+√((41-3-42.256)*6)";
@@ -142,7 +148,6 @@ if (preg_match('/[^0-9\/\*\-\+\.\,\@()%&]/', $calc) || !possibleCalc($calc)) {
     echo 'error<br>';
     print_r($calcArr);
     echo '<br>' . $calc . '<br>';
-
 } else {
     echo 'pass<br>';
     print_r($calcArr);
