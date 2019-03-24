@@ -3,13 +3,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'sans serif';
-    color: #bdc3c7;
+    color: #d0d6da;
 }
 body, html {
     background: #22272A;
 }
 #calculator {
-    background: #bdc3c7;
+    background: #d0d6da;
     position: relative;
     margin: 60px auto;
     width: 320px;
@@ -30,13 +30,13 @@ p {
 .row {
     display: flex;
     flex-direction: row;
-    background: #bdc3c7;
+    background: #d0d6da;
     justify-content: space-between;
     padding: .5px 0;
 }
 .botRow {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 25%;
 }
 input[type="button"] { 
     /* border: none; */
@@ -44,10 +44,13 @@ input[type="button"] {
     width: 25%;
     height: 65px;
     font-size: 1.2em;
-    transition: .3s;
+    transition: .5s;
 }
 input[type="button"]:hover {
-    background: rgb(43, 49, 53);
+    background: #2b3135;
+}
+input[type="button"]:active {
+    background: #3b3b3b;
 }
 input[type="submit"] { 
     border: none; 
@@ -57,17 +60,21 @@ input[type="submit"] {
     /* margin: .5px; */
     height: 65px;
     font-size: 1.2em;
-    transition: .3s;
+    transition: .5s;
     border-bottom-left-radius: 5px;
 }
 input[type="submit"]:hover {
     background: #1abc9c;
+}
+input[type="submit"]:active {
+    background: #89b9b0;
 }
 input[type="text"] {
     border: none;
     padding: 20px;
     width: 100%;
     background: none;
+    color: #22272A;
     text-align: right;
     font-size: 1em;
 }
@@ -75,7 +82,7 @@ input[type="text"] {
     border: none!important;
 }
 .border {
-    border-right: 0.3px solid #bdc3c7!important;
+    border-right: 0.3px solid #d0d6da!important;
     border-top: none;
     border-left: none;
     border-bottom: none;
@@ -87,11 +94,17 @@ input[type="text"] {
 #clear:hover {
     background: #e74c3c;
 }
+#clear:active {
+    background: #da8278;
+}
 .lighterBtn {
     background: #2c3e50!important;
 }
 .lighterBtn:hover {
     background: #34495e!important;
+}
+.lighterBtn:active {
+    background: #565d64!important;
 }
 input:focus {
     outline: none;

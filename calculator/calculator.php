@@ -18,7 +18,7 @@ if (!isset($_SESSION['result'])) { $_SESSION['result'] = '';}
         <form action="calculate.php" method="post">
             <h1>Calculator</h1>
             <p><?php echo $_SESSION['result'] ?></p>
-            <input type="text" value="" id="usrInput" name="usrInput" autofocus>
+            <input type="text" value="" id="usrInput" name="usrInput" autocomplete="off" autofocus>
 
             <div class="row">
                 <input type="button" value="(" id="openPar" class="border lighterBtn">
