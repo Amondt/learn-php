@@ -456,3 +456,14 @@ Faire un formulaire avec deux listes déroulantes. La première sert à choisir 
 En fonction des choix, afficher un calendrier comme celui-ci :
 
 ![Calendrier](excalendar.jpg "Calendrier")
+
+### Calculatrice
+
+creation of a calculator where the user enters any calculation, under a 'string' form. Then the calculator has to analyse that string and gives the result (might return an error message if the calculation is impossible).
+
+**programming languages used:**
+
+- HTML
+- CSS
+- Javascript
+- PHP
