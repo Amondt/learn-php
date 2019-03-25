@@ -1,6 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['result'])) { $_SESSION['result'] = '';}
+if (!isset($_SESSION['history'])) { $_SESSION['history'] = []; }
+// $_SESSION['history'] = [];
 ?>
 
 <!DOCTYPE html>
@@ -12,12 +14,22 @@ if (!isset($_SESSION['result'])) { $_SESSION['result'] = '';}
     <title>Calculator App</title>
     <script src="./js/scripts.js"></script>
     <link href="./css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
+    <!-- <div id='debug'><?php echo print_r($_SESSION['history']) . '<br>' . count($_SESSION['history']) ?></div> -->
     <div id="calculator">
         <form action="calculate.php" method="post">
             <h1>Calculator</h1>
-            <p><?php echo $_SESSION['result'] ?></p>
+            
+            <p><?php 
+                if (count($_SESSION['history'] > 0)) { 
+                    for ($i=(count($_SESSION['history'])-1); $i>=0; $i--) {
+                        echo $_SESSION['history'][$i] . '<br>'; 
+                    }
+                } else { echo '';}
+            ?></p>
+
             <input type="text" value="" id="usrInput" name="usrInput" autocomplete="off" autofocus>
 
             <div class="row">
@@ -47,13 +59,13 @@ if (!isset($_SESSION['result'])) { $_SESSION['result'] = '';}
             <div class="row">
                 <input type="button" value="0" id="n0" class="border">
                 <input type="button" value="." id="coma" class="border">
-                <input type="button" value="x²" id="pow" class="border lighterBtn">
+                <input type="button" value="del" id="del" class="border">
                 <input type="button" value="&#8730;" id="sqrt" class='noBorder lighterBtn'>
             </div>
             <div class="row botRow">
-                <input type="submit" value="=" id="equal" class="border">
-                <input type="button" value="del" id="del" class="border lighterBtn">
-                <input type="button" value="C" id="clear" class='noBorder'>
+                <input type="submit" value="=" id="equal" class="">
+                <input type="button" value="C" id="clear" class=''>
+                <input type="button" value="x²" id="pow" class="noBorder lighterBtn">
             </div>
         </form>
     </div>

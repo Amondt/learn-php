@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 $_SESSION['result'] = '';
 
 function possibleCalc($calcStr) {
@@ -53,7 +54,7 @@ function createCalcArray($calcStr) {
 
 function displayArr($arr) {
     for ($i=0; $i<sizeof($arr); $i++) {
-        // echo $arr[$i] . ' ';
+        echo $arr[$i] . ' ';
     }
     echo '<br>';
 }
@@ -64,7 +65,7 @@ function calculate($calcArr) {
         while ($j < sizeof($calcArr)) {
             displayArr($calcArr);
             echo 'el: ' . $calcArr[$j] . '<br>type of el: ' . gettype($calcArr[$j]) . '<br>$j: ' . $j . "<br>";
-            echo $calcArr;
+            echo print_r($calcArr) . '<br>';
             // Parenthesis
             if ($calcArr[$j] == '(' && $calcArr[$j+2] == ')') {
                 array_splice($calcArr, $j, 1);
@@ -127,7 +128,7 @@ function calculate($calcArr) {
                 array_splice($calcArr, $j-1, 0, $res);
             }
             $j++;
-            // echo '<br>';
+            echo '<br>';
         }
     }
     return $calcArr;
@@ -145,6 +146,7 @@ $calcArr = createCalcArray($calc);
 if (preg_match('/[^0-9\/\*\-\+\.\,\@()%&]/', $calc) || !possibleCalc($calc)) {
 
     $_SESSION['result'] = 'Error';
+    array_push($_SESSION['history'], $_SESSION['result']);
     echo 'error<br>';
     print_r($calcArr);
     echo '<br>' . $calc . '<br>';
@@ -156,9 +158,14 @@ if (preg_match('/[^0-9\/\*\-\+\.\,\@()%&]/', $calc) || !possibleCalc($calc)) {
     print_r($result);
     if (is_nan($result[0])) {
         $_SESSION['result'] = 'Calcul error';
-    } else {
+    } else if ($result[0] == '') {
+        $_SESSION['result'] = '';
+    } else if (strlen(substr(strrchr($result[0], "."), 1)) > 4) {
         $_SESSION['result'] = number_format((float)$result[0], 4, '.', '');
+    } else {
+        $_SESSION['result'] = $result[0];
     }
+    array_push($_SESSION['history'], $_SESSION['result']);
 }
 
 header('Location: calculator.php');
