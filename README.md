@@ -39,7 +39,7 @@ Ubuntu installation e.g.
 - [Les tableaux](#tableaux)
 - [Les paramètres](#parametres)
 - [Les formulaires](#formulaires)
-- [Les variables globales](#superGlobales)
+- [Les variables globales](#super-globales)
 - [Les dates](#dates)
 - [TP: calculatrice en PHP](#calculatrice)
 
@@ -386,7 +386,7 @@ Au formulaire de l'exercice 5, ajouter un champ d'envoi de fichier. Afficher, en
 
 Sur le formulaire de l'exercice 6, en plus de ce qui est demandé sur les exercices précédents, vérifier que le fichier transmis est bien un fichier **pdf**.
 
-### Super Gloables
+### Super Globales
 
 #### Exercice 1
 
